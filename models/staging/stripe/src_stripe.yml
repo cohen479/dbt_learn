@@ -1,0 +1,19 @@
+version: 2
+
+sources:
+    - name: stripe
+      description: A copy of the stripe payment dataset
+      database: raw
+      tables:
+        - name: payment
+          description: Raw payments transactions
+          columns:
+            - name: id
+              description: Primary key for payments
+              tests:
+                - unique
+                - not_null
+            - name: orderid
+              descriptions: Foreign key to orders
+              tests:
+                - not_null
