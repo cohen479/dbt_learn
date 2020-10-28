@@ -36,7 +36,7 @@ customer_orders as (
 customer_payments as (
     select
         orders.customer_id,
-        sum(payments.amount/100) as lifetime_value
+        sum(payments.amount) as lifetime_value
     from payments
     inner join orders on (orders.order_id = payments.order_id)
     where payments.status = 'success'
