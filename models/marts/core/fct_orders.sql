@@ -17,7 +17,7 @@ final as (
         orders.customer_id,
         orders.order_date,
         orders.status,
-        nvl(sum(case when payments.status = 'success' then payments.amount/100 else 0 end), 0) as amount
+        nvl(sum(case when payments.status = 'success' then payments.amount else 0 end), 0) as amount
     from orders
     left join payments on payments.order_id = orders.order_id
     group by 1, 2, 3, 4
